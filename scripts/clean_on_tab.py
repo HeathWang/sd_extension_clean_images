@@ -24,20 +24,21 @@ def base_clean_action(category):
     if category == 1:
         del_cnt = del_cnt + delete_image('outputs/txt2img-images')
         del_cnt = del_cnt + delete_image('outputs/txt2img-grids')
-        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + " done clean text to image..." + "total delete:{}".format(del_cnt)
+        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
     elif category == 2:
         del_cnt = del_cnt + delete_image('outputs/img2img-images')
         del_cnt = del_cnt + delete_image('outputs/img2img-grids')
-        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + " done clean text to image..." + "total delete:{}".format(del_cnt)
+        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
     return process_logs
 
 def clean_all():
+    global process_logs
     del_cnt = 0
     del_cnt = del_cnt + delete_image('outputs/txt2img-images')
     del_cnt = del_cnt + delete_image('outputs/txt2img-grids')
     del_cnt = del_cnt + delete_image('outputs/img2img-images')
     del_cnt = del_cnt + delete_image('outputs/img2img-grids')
-    process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + " done clean text to image..." + "total delete:{}".format(del_cnt)
+    process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
     return process_logs
 
 def delete_image(input_path):
@@ -59,13 +60,13 @@ def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         txt_3 = gr.Textbox(value="", label="Logs", lines=3)
 
-        btn_textImage = gr.Button(value="Text To Image")
+        btn_textImage = gr.Button(value="Clean Text To Image Output")
         btn_textImage.click(clean_text_to_images, outputs=[txt_3])
 
-        btn_imageImage = gr.Button(value="Image To Image")
+        btn_imageImage = gr.Button(value="Clean Image To Image Output")
         btn_imageImage.click(clean_image_to_images, outputs=[txt_3])
 
-        btn_all = gr.Button(value="ALL")
+        btn_all = gr.Button(value="Clean ALL Output")
         btn_all.click(clean_all, outputs=[txt_3])
         return [(ui_component, "Clean Output Images", "Clean Output Images")]
 
