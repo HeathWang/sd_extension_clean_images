@@ -28,13 +28,13 @@ def base_clean_action(category):
     elif category == 2:
         del_cnt = del_cnt + delete_image('outputs/img2img-images')
         del_cnt = del_cnt + delete_image('outputs/img2img-grids')
-        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
+        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean image to image..." + "total delete:{}\n".format(del_cnt)
     elif category == 3:
         del_cnt = del_cnt + delete_image('outputs/txt2img-images')
         del_cnt = del_cnt + delete_image('outputs/txt2img-grids')
         del_cnt = del_cnt + delete_image('outputs/img2img-images')
         del_cnt = del_cnt + delete_image('outputs/img2img-grids')
-        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
+        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean all images..." + "total delete:{}\n".format(del_cnt)
     return process_logs
 
 def clean_all():
