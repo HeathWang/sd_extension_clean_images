@@ -51,7 +51,7 @@ def delete_image(input_path):
             file_path = os.path.join(folder_path, f)
             if os.path.isfile(file_path):
                 os.remove(file_path)
-                sum++
+                sum += 1
 
     return sum
 
