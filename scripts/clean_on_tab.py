@@ -29,17 +29,16 @@ def base_clean_action(category):
         del_cnt = del_cnt + delete_image('outputs/img2img-images')
         del_cnt = del_cnt + delete_image('outputs/img2img-grids')
         process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
+    elif category == 3:
+        del_cnt = del_cnt + delete_image('outputs/txt2img-images')
+        del_cnt = del_cnt + delete_image('outputs/txt2img-grids')
+        del_cnt = del_cnt + delete_image('outputs/img2img-images')
+        del_cnt = del_cnt + delete_image('outputs/img2img-grids')
+        process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
     return process_logs
 
 def clean_all():
-    global process_logs
-    del_cnt = 0
-    del_cnt = del_cnt + delete_image('outputs/txt2img-images')
-    del_cnt = del_cnt + delete_image('outputs/txt2img-grids')
-    del_cnt = del_cnt + delete_image('outputs/img2img-images')
-    del_cnt = del_cnt + delete_image('outputs/img2img-grids')
-    process_logs = process_logs + now.strftime("%Y-%m-%d %H:%M:%S") + "-> done clean text to image..." + "total delete:{}\n".format(del_cnt)
-    return process_logs
+    return base_clean_action(3)
 
 def delete_image(input_path):
     sum = 0
