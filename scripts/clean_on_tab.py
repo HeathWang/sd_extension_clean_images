@@ -34,14 +34,14 @@ def delete_image(input_path):
     # /kaggle/working/stable-diffusion-webui/outputs/img2img-images
     # /kaggle/working/stable-diffusion-webui/outputs/extras-images
     folder_path = os.path.join(ROOT_DIR, input_path)
-        if not os.path.isdir(folder_path):
-            print(f"Warning: {folder_path} is not a directory.")
-            continue
-        
-        for f in os.listdir(folder_path):
-            file_path = os.path.join(folder_path, f)
-            if os.path.isfile(file_path):
-                os.remove(file_path)
+    if not os.path.isdir(folder_path):
+        print(f"Warning: {folder_path} is not a directory.")
+        continue
+    
+    for f in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, f)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
 
 
 
